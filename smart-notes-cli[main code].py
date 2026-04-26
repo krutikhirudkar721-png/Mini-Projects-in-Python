@@ -1,8 +1,11 @@
 import json
 import datetime
 import os
+import tkinter as tk
+from tkinter import messagebox, simpledialog
 
 FILE = "notes.json"
+
 # Load notes
 def load_notes():
     if not os.path.exists(FILE):
@@ -15,79 +18,83 @@ def save_notes(notes):
     with open(FILE, "w") as f:
         json.dump(notes, f, indent=4)
 
-# Add note
-def add_note():
-    text = input("Enter note: ")
-    tag = input("Enter tag: ")
-    time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+class NotesApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Smart Notes GUI")
+        self.root.geometry("500x500")
 
-    notes = load_notes()
-    notes.append({"text": text, "tag": tag, "time": time})
-    save_notes(notes)
-    print("✅ Note added!")
+        self.notes = load_notes()
 
-# View notes
-def view_notes():
-    notes = load_notes()
-    if not notes:
-        print("No notes found.")
-        return
+        self.listbox = tk.Listbox(root, width=60, height=20)
+        self.listbox.pack(pady=10)
 
-    for i, note in enumerate(notes):
-        print(f"\n[{i}] {note['text']}")
-        print(f"   Tag: {note['tag']} | Time: {note['time']}")
+        btn_frame = tk.Frame(root)
+        btn_frame.pack()
 
-# Delete note
-def delete_note():
-    view_notes()
-    notes = load_notes()
+        tk.Button(btn_frame, text="Add", width=10, command=self.add_note).grid(row=0, column=0, padx=5)
+        tk.Button(btn_frame, text="Delete", width=10, command=self.delete_note).grid(row=0, column=1, padx=5)
+        tk.Button(btn_frame, text="Search", width=10, command=self.search_notes).grid(row=0, column=2, padx=5)
+        tk.Button(btn_frame, text="Refresh", width=10, command=self.refresh_list).grid(row=0, column=3, padx=5)
 
-    try:
-        index = int(input("\nEnter index to delete: "))
-        notes.pop(index)
-        save_notes(notes)
-        print("🗑️ Note deleted!")
-    except:
-        print("Invalid index!")
+        self.refresh_list()
 
-# Search notes
-def search_notes():
-    keyword = input("Enter keyword: ").lower()
-    notes = load_notes()
+    def refresh_list(self):
+        self.notes = load_notes()
+        self.listbox.delete(0, tk.END)
+        for note in self.notes:
+            display = f"{note['text']} | {note['tag']} | {note['time']}"
+            self.listbox.insert(tk.END, display)
 
-    found = False
-    for note in notes:
-        if keyword in note["text"].lower():
-            print(f"\n{note['text']} ({note['tag']})")
-            found = True
+    def add_note(self):
+        text = simpledialog.askstring("Input", "Enter note:")
+        if not text:
+            return
 
-    if not found:
-        print("No matching notes.")
+        tag = simpledialog.askstring("Input", "Enter tag:")
+        if not tag:
+            tag = "general"
 
-# Menu
-def main():
-    while True:
-        print("\n--- Smart Notes CLI ---")
-        print("1. Add Note")
-        print("2. View Notes")
-        print("3. Delete Note")
-        print("4. Search Notes")
-        print("5. Exit")
+        time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-        choice = input("Choose: ")
+        self.notes.append({"text": text, "tag": tag, "time": time})
+        save_notes(self.notes)
+        self.refresh_list()
+        messagebox.showinfo("Success", "Note added!")
 
-        if choice == "1":
-            add_note()
-        elif choice == "2":
-            view_notes()
-        elif choice == "3":
-            delete_note()
-        elif choice == "4":
-            search_notes()
-        elif choice == "5":
-            break
-        else:
-            print("Invalid choice!")
+    def delete_note(self):
+        selected = self.listbox.curselection()
+        if not selected:
+            messagebox.showwarning("Warning", "Select a note first")
+            return
 
+        index = selected[0]
+        self.notes.pop(index)
+        save_notes(self.notes)
+        self.refresh_list()
+        messagebox.showinfo("Deleted", "Note deleted!")
+
+    def search_notes(self):
+        keyword = simpledialog.askstring("Search", "Enter keyword:")
+        if not keyword:
+            return
+
+        results = []
+        for note in self.notes:
+            if keyword.lower() in note["text"].lower():
+                results.append(note)
+
+        if not results:
+            messagebox.showinfo("Search", "No matching notes")
+            return
+
+        self.listbox.delete(0, tk.END)
+        for note in results:
+            display = f"{note['text']} | {note['tag']} | {note['time']}"
+            self.listbox.insert(tk.END, display)
+
+# Run app
 if __name__ == "__main__":
-    main()
+    root = tk.Tk()
+    app = NotesApp(root)
+    root.mainloop()
