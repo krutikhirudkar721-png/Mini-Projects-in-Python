@@ -1,20 +1,11 @@
-# 🧠 Smart Notes CLI
+🧠 Quiz Game (Python)
 
-A fast and minimal command-line notes manager built with Python.
-Capture ideas, organize with tags, and find anything instantly — all from your terminal.
+A fun and interactive command-line quiz game built with Python that challenges users with multiple-choice questions and provides instant feedback.
 
-## ✨ Features
+It tracks your score in real time and offers a simple yet engaging way to test knowledge while showcasing core programming skills.
 
-* 📝 Add & tag notes
-* 🔍 Quick search
-* 📂 View all notes
-* ❌ Delete easily
-* ⏱️ Auto timestamps
-
-## 🚀 Run
-
-```bash
-python smart-notes-cli.py
-```
-
-💡 Simple. Useful. Built to learn and grow.
+✨ Highlights
+Interactive quiz experience
+Instant answer feedback
+Real-time score tracking
+Beginner-friendly and lightweight
