@@ -1,8 +1,8 @@
 # !!! 🧠 Quiz Game (Python) !!!
 
-A fun and interactive command-line quiz game built with Python that challenges users with multiple-choice questions and provides instant feedback.
+A fun and interactive command-line quiz game built with Python that challenges users with randomized multiple-choice questions and provides instant feedback.
 
-It tracks your score in real time and offers a simple yet engaging way to test knowledge while showcasing core programming skills.
+It tracks scores in real time, shows performance with percentage-based results, and allows users to replay the quiz for a better and more engaging experience.
 
 # ✨ Highlights
 Interactive quiz experience.<br>
