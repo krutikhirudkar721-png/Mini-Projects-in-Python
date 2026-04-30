@@ -5,7 +5,8 @@ A fun and interactive command-line quiz game built with Python that challenges u
 It tracks scores in real time, shows performance with percentage-based results, and allows users to replay the quiz for a better and more engaging experience.
 
 # ✨ Highlights
-Interactive quiz experience.<br>
-Instant answer feedback.<br>
-Real-time score tracking.<br>
-Beginner-friendly and lightweight.<br>
+* Randomized quiz experience<br>
+* Instant answer feedback<br>
+* Real-time score & percentage tracking<br>
+* Input validation for smooth gameplay<br>
+* Replay option<br>
