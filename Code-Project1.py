@@ -24,7 +24,6 @@ class NotesApp:
         self.root.geometry("500x500")
 
         self.notes = load_notes()
-
         self.listbox = tk.Listbox(root, width=60, height=20)
         self.listbox.pack(pady=10)
 
