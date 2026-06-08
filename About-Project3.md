@@ -10,4 +10,4 @@ A simple and modern desktop digital clock built using Python and Tkinter.
 * Lightweight performance with minimal CPU usage
 
 🚀 How to Run
-copy the code from smart-notes-cli[main code].py and run it on any python compiler.
+copy the code from import tkinteras tk and run it on any python compiler.
