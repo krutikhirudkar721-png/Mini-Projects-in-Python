@@ -6,7 +6,7 @@ def update_time():
     current_time = strftime('%I:%M:%S %p')
     clock_label.config(text=current_time)
     clock_label.after(1000, update_time)
-
+    
 root = tk.Tk()
 root.title("Digital Clock")
 root.configure(bg='#121212')
