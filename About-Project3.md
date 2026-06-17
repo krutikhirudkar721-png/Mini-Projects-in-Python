@@ -9,5 +9,6 @@ A simple and modern desktop digital clock built using Python and Tkinter.
 * Retro digital font support for an LED look
 * Lightweight performance with minimal CPU usage
 
+
 🚀 How to Run
 copy the code from import tkinter as tk and run it on any python compiler.
