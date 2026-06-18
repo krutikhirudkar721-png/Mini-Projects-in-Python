@@ -3,6 +3,7 @@
 A simple command-line notes manager built using Python.
 
 ## ✨ Features
+
 - Add notes with tags
 - View all notes
 - Delete notes
