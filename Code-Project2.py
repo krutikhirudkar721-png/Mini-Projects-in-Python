@@ -18,7 +18,6 @@ def ask_question(q, index):
         print(f"❌ Wrong! Correct answer is {q['answer']}")
         return 0
 
-
 def run_quiz(questions):
     score = 0
     random.shuffle(questions)
