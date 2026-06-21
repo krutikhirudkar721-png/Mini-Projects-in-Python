@@ -1,4 +1,4 @@
-# !!! 🧠 Quiz Game (Python) !!!
+# !!! 🧠 Quiz Game !!!
 
 A fun and interactive command-line quiz game built with Python that challenges users with randomized multiple-choice questions and provides instant feedback.
 
