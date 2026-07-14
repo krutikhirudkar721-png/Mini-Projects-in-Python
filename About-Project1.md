@@ -12,4 +12,5 @@ A simple command-line notes manager built using Python.
 
 ## 🚀 How to Run
 ```bash
+
 copy the code from smart-notes-cli[main code].py and run it on any python compiler.
