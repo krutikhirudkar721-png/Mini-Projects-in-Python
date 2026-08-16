@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import ttk
 from time import strftime
 
-
 def update_time():
     current_time = strftime('%I:%M:%S %p')
     clock_label.config(text=current_time)
@@ -23,6 +22,7 @@ root.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
 
 style = ttk.Style()
 style.configure(
+
     'TLabel', 
     background='#121212', 
     foreground='#FF5F1F', 
