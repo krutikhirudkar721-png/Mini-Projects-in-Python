@@ -73,6 +73,4 @@ def play():
         if again != "yes":
             print("👋 Thanks for playing!")
             break
-
-
 play()
