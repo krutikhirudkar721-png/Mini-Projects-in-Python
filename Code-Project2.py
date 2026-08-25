@@ -2,8 +2,7 @@ import random
 def ask_question(q, index):
     print(f"\nQuestion {index}: {q['question']}")
     for option in q['options']:
-        print(option)
-
+        print(option)
     while True:
         answer = input("Your answer (A/B/C/D): ").upper()
         if answer in ['A', 'B', 'C', 'D']:
