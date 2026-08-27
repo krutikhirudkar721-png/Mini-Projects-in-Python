@@ -4,6 +4,7 @@ import os
 import tkinter as tk
 from tkinter import messagebox, simpledialog
 
+
 FILE = "notes.json"
 
 # Load notes
